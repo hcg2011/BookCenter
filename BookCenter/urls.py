@@ -15,8 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+
+# router = DefaultRouter()
+#
+# router.register(r'books', BooksListViewSet, base_name="books")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('user/', include(('users.urls', 'user_name'), namespace='user', )),
+    path('user/', include('users.urls', namespace='user')),
+    path('', include('books.urls', namespace='books')),
+    path('tinymce/', include('tinymce.urls')),
 ]

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
 # Register your models here.
-from users.models import Passport
+from books.models import Books
 
-admin.site.register(Passport)
+admin.site.register(Books)

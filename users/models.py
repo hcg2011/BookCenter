@@ -31,5 +31,5 @@ class Passport(BaseModel):
     # 用户表的管理器
     objects = PassportManager()
 
-    class Meta:
+    class Meta:  # 这个是model里面定义元数据的，默认会自动创建，故可有可无。
         db_table = 's_user_account'
