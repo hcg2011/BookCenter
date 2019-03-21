@@ -83,7 +83,7 @@
     </div>
 
     <div class="book_detail_con clearfix">
-        <div class="book_detail_pic fl"><img src="{% static 'books/book_python.jpg' %}"></div>
+        <div class="book_detail_pic fl"><img src="{% static books.image.url %}"></div>
 
         <div class="book_detail_list fr">
             <h3>{{ books.name }}</h3>
@@ -115,7 +115,8 @@
                 <ul>
                     {% for book in books_li %}
                         <li>
-                            <a href="{% url 'books:detail' books_id=books.id %}"><img src="{% static 'books/book_python.jpg' %}"></a>
+                            <a href="{% url 'books:detail' books_id=books.id %}"><img
+                                    src="{% static books.image.url %}"></a>
                             <h4><a href="{% url 'books:detail' books_id=books.id %}">{{ book.name }}</a></h4>
                             <div class="prize">￥{{ book.price }}</div>
                         </li>
