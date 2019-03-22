@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from django.urls import reverse
 
-from users.models import Passport
+from users.models import Passport, Address
 
 
 def register(request):
@@ -65,3 +65,15 @@ def login_check(req):
 def logout(req):
     req.session.flush()
     return redirect(reverse("books:index"))
+
+
+def user(req):
+    passport_id = req.session.get("passport_id")
+    addr = Address.objects.get_def_addr(passport_id)
+    books_li = []
+    context = {
+        'addr': addr,
+        'page': 'user',
+        'books_li': books_li
+    }
+    return render(req, "users/user_center_info.html", context)
