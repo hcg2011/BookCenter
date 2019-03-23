@@ -45,7 +45,7 @@ class AddressManager(models.Manager):
         return addr
 
     def add_one_addr(self, passport_id, recipient_name, recipient_addr, zip_code, recipient_phone):
-        def_addr = self.get_def_addr(self, passport_id=passport_id)
+        def_addr = self.get_def_addr(passport_id)
         if def_addr:
             is_default = True
         else:

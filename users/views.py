@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 
 from users.models import Passport, Address
+from utils.decorators import login_required
 
 
 def register(request):
@@ -66,7 +67,7 @@ def logout(req):
     req.session.flush()
     return redirect(reverse("books:index"))
 
-
+@login_required
 def user(req):
     passport_id = req.session.get("passport_id")
     addr = Address.objects.get_def_addr(passport_id)
