@@ -92,7 +92,7 @@
                 {% for book in javascript_hot %}
                     <li>
                         <h4><a href="#">{{ book.name }}</a></h4>
-                        <a href="#"><img src="{% static book.image %}"></a>
+                        <a href="#"><img src="{% static book.image.url %}"></a>
                         <div class="prize">¥ {{ book.price }}</div>
                     </li>
                 {% endfor %}
@@ -118,7 +118,7 @@
                 {% for book in algorithms_hot %}
                     <li>
                         <h4><a href="#">{{ book.name }}</a></h4>
-                        <a href="#"><img src="{% static book.image %}"></a>
+                        <a href="#"><img src="{% static book.image.url %}"></a>
                         <div class="prize">¥ {{ book.price }}</div>
                     </li>
                 {% endfor %}
@@ -144,7 +144,7 @@
                 {% for book in machinelearning_hot %}
                     <li>
                         <h4><a href="#">{{ book.name }}</a></h4>
-                        <a href="#"><img src="{% static book.image %}"></a>
+                        <a href="#"><img src="{% static book.image.url %}"></a>
                         <div class="prize">¥ {{ book.price }}</div>
                     </li>
                 {% endfor %}
@@ -170,7 +170,7 @@
                 {% for book in operatingsystem_hot %}
                     <li>
                         <h4><a href="#">{{ book.name }}</a></h4>
-                        <a href="#"><img src="{% static book.image %}"></a>
+                        <a href="#"><img src="{% static book.image.url %}"></a>
                         <div class="prize">¥ {{ book.price }}</div>
                     </li>
                 {% endfor %}
@@ -196,7 +196,7 @@
                 {% for book in database_hot %}
                     <li>
                         <h4><a href="#">{{ book.name }}</a></h4>
-                        <a href="#"><img src="{% static book.image %}"></a>
+                        <a href="#"><img src="{% static book.image.url %}"></a>
                         <div class="prize">¥ {{ book.price }}</div>
                     </li>
                 {% endfor %}

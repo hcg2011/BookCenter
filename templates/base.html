@@ -17,6 +17,15 @@
     {% endblock topfiles %}
 </head>
 <body>
+{# 获取用户购物车中商品的数目 #}
+{% block cart_count %}
+    <script>
+        $.get('/cart/count/', function (data) {
+            // {'res':商品的总数}
+            $('#show_count').html(data.res)
+        })
+    </script>
+{% endblock cart_count %}
 {# 网页顶部欢迎信息块 #}
 {% block header_con %}
     <div class="header_con">

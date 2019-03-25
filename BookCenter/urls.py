@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework.routers import DefaultRouter
 
 # router = DefaultRouter()
 #
@@ -26,4 +25,5 @@ urlpatterns = [
     path('user/', include('users.urls', namespace='user')),
     path('', include('books.urls', namespace='books')),
     path('tinymce/', include('tinymce.urls')),
+    path('cart/', include('cart.urls', namespace="cart")),
 ]
