@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
 # Create your views here.
 from django.urls import reverse
-from django_redis import get_redis_connection
+from django.views.decorators.cache import cache_page
 
 from books.enums import *
 from books.models import Books
 
 
+@cache_page(60 * 15)
 def index(request):
     python_new = Books.objects.get_books_by_type(PYTHON, limit=3, sort='new')
     python_hot = Books.objects.get_books_by_type(PYTHON, limit=4, sort='hot')
@@ -77,7 +78,6 @@ def list(request, type_id, page):
         return redirect(reverse('books:index'))
 
     books_li = Books.objects.get_books_by_type(type_id=type_id, sort=sort)
-
     paginator = Paginator(books_li, 1)
 
     num_pages = paginator.num_pages

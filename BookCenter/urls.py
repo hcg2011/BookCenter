@@ -26,4 +26,5 @@ urlpatterns = [
     path('', include('books.urls', namespace='books')),
     path('tinymce/', include('tinymce.urls')),
     path('cart/', include('cart.urls', namespace="cart")),
+    path('comments/', include('comments.urls', namespace="comments")),
 ]
