@@ -83,7 +83,7 @@
             <input type="button" class="input_btn fr" name="" value="搜索">
         </div>
         <div class="guest_cart fr">
-            <a href="cart.html" class="cart_name fl">我的购物车</a>
+            <a href="{% url "cart:show" %}" class="cart_name fl">我的购物车</a>
             <div class="book_count fl" id="show_count">1</div>
         </div>
     </div>
@@ -145,6 +145,19 @@
                 <a href="javascript:;" class="buy_btn">立即购买</a>
                 <a href="javascript:;" books_id="{{ books.id }}" class="add_cart" id="add_cart">加入购物车</a>
             </div>
+             {% csrf_token %}
+            <a href="{% url "comments:comment" books_id=books.id %}" id="write-comment" class="comment">我要写评论</a>
+            <div style="display:flex;" id="comment-input" data-bookid="{{ books.id }}"
+                 data-userid="{{ request.session.passport_id }}">
+                <div>
+                    <input type="text" placeholder="评论内容">
+                </div>
+                <div id="submit-comment">
+                    <button>
+                        提交评论
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -191,40 +204,40 @@
         var $to_x = $('#show_count').offset().top;
         var $to_y = $('#show_count').offset().left;
 
-       $('#add_cart').click(function(){
-        // 获取商品的id和商品数量
-        books_id = $(this).attr('books_id')
-        books_count = $('.num_show').val()
-        csrf = $('input[name="csrfmiddlewaretoken"]').val()
-        // 发起请求，访问/cart/add/, 进行购物车数据的添加
-        params = {
-        	'books_id': books_id,
-        	'books_count': books_count,
-            'csrfmiddlewaretoken': csrf
-        }
+        $('#add_cart').click(function () {
+            // 获取商品的id和商品数量
+            books_id = $(this).attr('books_id')
+            books_count = $('.num_show').val()
+            csrf = $('input[name="csrfmiddlewaretoken"]').val()
+            // 发起请求，访问/cart/add/, 进行购物车数据的添加
+            params = {
+                'books_id': books_id,
+                'books_count': books_count,
+                'csrfmiddlewaretoken': csrf
+            }
 
-        $.post('/cart/add/', params, function (data) {
-            if (data.res == 5){
-                // 添加成功
-                $(".add_jump").css({'left':$add_y+80,'top':$add_x+10,'display':'block'})
-                $(".add_jump").stop().animate({
-                    'left': $to_y+7,
-                    'top': $to_x+7},
-                    "fast", function() {
-                        $(".add_jump").fadeOut('fast',function(){
-                            // 获取原有show_count的值
-                            count = $('#show_count').html()
-                            count = parseInt(count) + parseInt(books_count)
-                            $('#show_count').html(count);
+            $.post('/cart/add/', params, function (data) {
+                if (data.res == 5) {
+                    // 添加成功
+                    $(".add_jump").css({'left': $add_y + 80, 'top': $add_x + 10, 'display': 'block'})
+                    $(".add_jump").stop().animate({
+                            'left': $to_y + 7,
+                            'top': $to_x + 7
+                        },
+                        "fast", function () {
+                            $(".add_jump").fadeOut('fast', function () {
+                                // 获取原有show_count的值
+                                count = $('#show_count').html()
+                                count = parseInt(count) + parseInt(books_count)
+                                $('#show_count').html(count);
+                            });
                         });
-                });
-            }
-            else {
-                // 添加失败
-                alert(data.errmsg)
-            }
+                } else {
+                    // 添加失败
+                    alert(data.errmsg)
+                }
+            })
         })
-	})
     </script>
 {% endblock body %}
 </html>

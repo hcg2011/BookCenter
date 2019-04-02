@@ -27,4 +27,5 @@ urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
     path('cart/', include('cart.urls', namespace="cart")),
     path('comments/', include('comments.urls', namespace="comments")),
+    path('search/', include('haystack.urls', namespace="comments")),
 ]

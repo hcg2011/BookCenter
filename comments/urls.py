@@ -1,12 +1,8 @@
 from django.urls import path
 
-from cart import views
+from comments import views
 
 app_name = "comments"
 urlpatterns = [
-    path('add/', views.cart_add, name='add'),
-    path('count/', views.cart_count, name='count'),
-    path('show/', views.cart_show, name='show'),
-    path('del/', views.cart_del, name='delete'),
-    path('update/', views.cart_update, name='update'),
+    path('comment/<int:books_id>/', views.comment, name='comment'),
 ]
