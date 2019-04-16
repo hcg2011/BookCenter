@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '^jwuo1f6x_&e@jvmrbc*rk(woi%*7d*=ga=lypp%j!yj(jwt_u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'books',
     'tinymce',  # 富文本编辑器
     "comments",
-    "haystack",
+    # "haystack",
 ]
 
 MIDDLEWARE = [
@@ -130,6 +130,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 TINYMCE_DEFAULT_CONFIG = {
     'theme': 'advanced',
@@ -153,16 +154,17 @@ CACHES = {
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"
 
-HAYSTACK_CONNECTIONS = {  # 全文检索配置
-    'default': {
-        # 使用whoosh引擎
-        'ENGINE': 'haystack.backends.whoosh_cn_backend.WhooshEngine',
-        # 索引文件路径
-        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
-    }
-}
+# HAYSTACK_CONNECTIONS = {  # 全文检索配置
+#     'default': {
+#         # 使用whoosh引擎
+#         'ENGINE': 'haystack.backends.whoosh_cn_backend.WhooshEngine',
+#         # 'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+#         # 索引文件路径
+#         'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+#     }
+# }
 
 # 当添加、修改、删除数据时，自动生成索引
-HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
-
-HAYSTACK_SEARCH_RESULTS_PER_PAGE = 6  # 指定搜索结果每页的条数
+# HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+#
+# HAYSTACK_SEARCH_RESULTS_PER_PAGE = 6  # 指定搜索结果每页的条数

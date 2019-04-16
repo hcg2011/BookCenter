@@ -20,12 +20,12 @@ from django.urls import path, include
 #
 # router.register(r'books', BooksListViewSet, base_name="books")
 
-urlpatterns = [
+urlpatterns = {
     path('admin/', admin.site.urls),
     path('user/', include('users.urls', namespace='user')),
     path('', include('books.urls', namespace='books')),
     path('tinymce/', include('tinymce.urls')),
     path('cart/', include('cart.urls', namespace="cart")),
     path('comments/', include('comments.urls', namespace="comments")),
-    path('search/', include('haystack.urls', namespace="comments")),
-]
+   # path('search/', include('haystack.urls')),
+}
