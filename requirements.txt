@@ -10,7 +10,7 @@ colorama==0.4.1
 construct==2.5.3
 cryptography==2.6.1
 decorator==4.4.0
-Django==2.2
+Django==2.2.10
 django-cors-headers==2.5.0
 django-haystack==2.8.1
 django-redis==4.10.0
