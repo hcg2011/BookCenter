@@ -15,7 +15,7 @@ django-cors-headers==2.5.0
 django-haystack==2.8.1
 django-redis==4.10.0
 django-tinymce==2.8.0
-djangorestframework==3.9.2
+djangorestframework==3.11.2
 djangorestframework-jwt==1.11.0
 dnspython==1.16.0
 eventlet==0.24.1
