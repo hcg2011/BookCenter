@@ -34,7 +34,7 @@ MyApplication==0.1.0
 mysqlclient==1.4.2.post1
 olefile==0.46
 pefile==2018.8.8
-Pillow==5.4.1
+Pillow==9.0.1
 psutil==5.6.1
 public==2018.11.20
 pycparser==2.19
