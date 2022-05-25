@@ -40,7 +40,7 @@ public==2018.11.20
 pycparser==2.19
 pycryptodome==3.7.3
 pycryptodomex==3.7.2
-PyJWT==1.7.1
+PyJWT==2.4.0
 PyMySQL==0.9.3
 pyte==0.8.0
 python-alipay-sdk==1.10.0
